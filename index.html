@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️SS❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #131212;
+            color: white;
+        }
+
+        /* Full screen background music */
+        audio {
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            z-index: 9999; /* Ensure it stays on top */
+        }
+
+        /* Slider Container */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;  /* Ensures image covers the full container while maintaining aspect ratio */
+        }
+
+        .full-screen-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Cover the entire viewport, may crop parts of the image */
+        }
+
+        /* Text Overlays */
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            font-size: 2rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .text-overlay h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .text-overlay p {
+            font-size: 1.5rem;
+        }
+
+        /* Slider Navigation (Arrows) */
+        .slider-navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            pointer-events: none; /* Prevents interaction with the arrows outside the image */
+        }
+
+        .prev, .next {
+            font-size: 3rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            pointer-events: all; /* Ensures arrows are clickable */
+            transition: 0.3s;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Love Message at the Bottom */
+        .bottom-message {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            font-size: 0.811rem;
+            color: #ffb6c1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Background Music -->
+    <audio controls autoplay>
+        <source src="Sweethearts.mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Image and Text Slider -->
+    <div class="slider-container">
+        <!-- Slide 1 -->
+        <div class="slide">
+            <img src="images/l0.jpg" alt="Romantic Moment 1" class="full-screen-image">
+            <div class="bottom-message">
+                <h1>My Beautiful Love</h1>
+                <p>Every day with you feels like a dream come true. I cherish our moments together forever.</p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <img src="images/l1.jpg" alt="Romantic Moment 2" class="full-screen-image">
+            <div class="bottom-message">
+                <h1>My Heart Belongs to You</h1>
+                <p>Your love makes my world brighter, and I will love you endlessly.</p>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+            <img src="images/l2.jpg" alt="Romantic Moment 3" class="full-screen-image">
+            <div class="bottom-message">
+                <h1>Forever Together</h1>
+                <p>You are my everything. With you, I feel complete. I am so grateful for you.</p>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide">
+            <img src="images/l3.jpg" alt="Romantic Moment 4" class="full-screen-image">
+            <div class="bottom-message">
+                <h1>Always and Forever</h1>
+                <p>Through all of life's ups and downs, I'll always be here for you. Forever and always.</p>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide">
+            <img src="images/l4.jpg" alt="Romantic Moment 4" class="full-screen-image">
+            <div class="bottom-message">
+                <h1>Always and Forever</h1>
+                <p>Through all of life's ups and downs, I'll always be here for you. Forever and always.</p>
+            </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <div class="slider-navigation">
+            <button class="prev" onclick="prevSlide()">❮</button>
+            <button class="next" onclick="nextSlide()">❯</button>
+        </div>
+    </div>
+
+    <!-- Love Message at the Bottom -->
+    <!-- <div class="bottom-message">
+        <p>You're the love of my life ❤️</p>
+    </div> -->
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        // Display the first slide
+        slides[currentSlide].style.display = 'block';
+
+        // Disable the "Previous" button if the current slide is the first one
+        const prevButton = document.querySelector('.prev');
+
+        // Function to update navigation button states
+        function updateNavigationButtons() {
+            if (currentSlide === 0) {
+                prevButton.disabled = true;
+            } else {
+                prevButton.disabled = false;
+            }
+        }
+
+        // Function to show next slide
+        function nextSlide() {
+            slides[currentSlide].style.display = 'none';
+            currentSlide = (currentSlide + 1) % totalSlides; // Loop back to the first slide
+            slides[currentSlide].style.display = 'block';
+            updateNavigationButtons();
+        }
+
+        // Function to show previous slide
+        function prevSlide() {
+            slides[currentSlide].style.display = 'none';
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; // Loop back to the last slide
+            slides[currentSlide].style.display = 'block';
+            updateNavigationButtons();
+        }
+
+        // Initialize the navigation state
+        updateNavigationButtons();
+    </script>
+
+</body>
+</html>
