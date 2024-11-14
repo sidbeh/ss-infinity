@@ -12,6 +12,7 @@
             overflow-x: hidden;
             background-color: #131212;
             color: white;
+            position: relative;
         }
 
         /* Full screen background music */
@@ -22,7 +23,39 @@
             transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.5);
             padding: 10px;
-            z-index: 9999; /* Ensure it stays on top */
+            z-index: 9999;
+        }
+
+        /* Falling Hearts and Roses */
+        .falling-item {
+            position: absolute;
+            bottom: 0;  /* Start from the bottom */
+            animation: rise linear infinite;
+            font-size: 2rem;
+            user-select: none;
+            pointer-events: none;
+            opacity: 0.7;  /* Slight transparency */
+            z-index: 2;  /* Ensure it stays on top of the images */
+        }
+
+        .heart {
+            color: #ff6347; /* Red heart color */
+        }
+
+        .rose {
+            color: #ff1493; /* Deep pink rose color */
+        }
+
+        /* Animation for moving up */
+        @keyframes rise {
+            0% {
+                transform: translateY(100vh);  /* Start from bottom */
+                opacity: 0.7;  /* Initial opacity */
+            }
+            100% {
+                transform: translateY(-100vh);  /* End at the top */
+                opacity: 0.3;  /* Fade out slightly as it rises */
+            }
         }
 
         /* Slider Container */
@@ -41,13 +74,13 @@
             width: 100%;
             height: 100%;
             position: absolute;
-            object-fit: cover;  /* Ensures image covers the full container while maintaining aspect ratio */
+            object-fit: cover;
         }
 
         .full-screen-image {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Cover the entire viewport, may crop parts of the image */
+            object-fit: contain;
         }
 
         /* Text Overlays */
@@ -81,7 +114,7 @@
             display: flex;
             justify-content: space-between;
             padding: 0 20px;
-            pointer-events: none; /* Prevents interaction with the arrows outside the image */
+            pointer-events: none;
         }
 
         .prev, .next {
@@ -92,7 +125,7 @@
             cursor: pointer;
             color: #fff;
             border: none;
-            pointer-events: all; /* Ensures arrows are clickable */
+            pointer-events: all;
             transition: 0.3s;
         }
 
@@ -118,18 +151,34 @@
 
     <!-- Background Music -->
     <audio controls autoplay>
-        <source src="Sweethearts.mp3">
+        <source src="Mo-Priya-Tharu-Kie-Adhika-Sundara--Sindura-Bindu.mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Falling Hearts and Roses -->
+    <div id="falling-items" class="slider-container">
+
+        <!-- Background Music -->
+    <audio controls autoplay>
+        <source src="Mo-Priya-Tharu-Kie-Adhika-Sundara--Sindura-Bindu.mp3">
         Your browser does not support the audio element.
     </audio>
 
     <!-- Image and Text Slider -->
     <div class="slider-container">
+
+        <!-- Slide 1 -->
+        <div class="slide">
+            <img src="images/l10.jpg" alt="Romantic Moment 1" class="full-screen-image">
+        </div>
+
+        
         <!-- Slide 1 -->
         <div class="slide">
             <img src="images/l0.jpg" alt="Romantic Moment 1" class="full-screen-image">
             <div class="bottom-message">
-                <h1>My Beautiful Love</h1>
-                <p>Every day with you feels like a dream come true. I cherish our moments together forever.</p>
+                <h1>ମନୋହରା ସ୍ବପ୍ନ</h1>
+                <p>ତୋ ସହିତ ପ୍ରତିଦିନ ଏମିତି ଲାଗେ ଯେପରି, ଏକ ସ୍ବପ୍ନ ସାକାର ହେବା ଭଳି। ଏହା ତୋତେ ବ୍ୟକ୍ତ କରିବାରେ ମୋର ଗୋଟେ ଛୋଟ ପ୍ରୟାସ ।</p>
             </div>
         </div>
 
@@ -137,8 +186,8 @@
         <div class="slide">
             <img src="images/l1.jpg" alt="Romantic Moment 2" class="full-screen-image">
             <div class="bottom-message">
-                <h1>My Heart Belongs to You</h1>
-                <p>Your love makes my world brighter, and I will love you endlessly.</p>
+                <h1>ମୋର ସୁନା ଛୁଆ</h1>
+                <p>ତୁ କାହିଁକି ଏତେ ଦୁଃଖିତ? ହସି ଦେ ଟିକେ ।</p>
             </div>
         </div>
 
@@ -146,8 +195,8 @@
         <div class="slide">
             <img src="images/l2.jpg" alt="Romantic Moment 3" class="full-screen-image">
             <div class="bottom-message">
-                <h1>Forever Together</h1>
-                <p>You are my everything. With you, I feel complete. I am so grateful for you.</p>
+                <h1>ମୋ ପ୍ରିୟା ଥାରୁ କିଏ ଅଧିକ ସୁନ୍ଦର</h1>
+                <p>ମୁଁ ମୋର ସମସ୍ତ ସାମର୍ଥ୍ୟ ସହିତ ଏହି ଚେଷ୍ଟା କରିବି,ଯେପରିକି ତୁ ଚିର ଦିନ ପାଇଁ ଏମିତି ହସୁଥା ।</p>
             </div>
         </div>
 
@@ -155,8 +204,16 @@
         <div class="slide">
             <img src="images/l3.jpg" alt="Romantic Moment 4" class="full-screen-image">
             <div class="bottom-message">
-                <h1>Always and Forever</h1>
-                <p>Through all of life's ups and downs, I'll always be here for you. Forever and always.</p>
+                <h1>ମୋର ପ୍ରିୟା ରାଜକୁମାରୀ</h1>
+                <p>ତୁମେ ଏତେ ମନୋହରା, ଏବଂ ତୁମ ଆଖି ଏତେ ସୁନ୍ଦର, ମୁଁ ତୁମ ପ୍ରତି ପ୍ରେମରେ ସମ୍ପୂର୍ଣ ଭାବରେ ଡୁବି ଗଲିନି । ତୁମେ ମୋର ହୃଦୟର ରାଣୀ।</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="images/l7.jpg" alt="Romantic Moment 4" class="full-screen-image">
+            <div class="bottom-message">
+                <h1>ମଣିଷତ୍ୱ</h1>
+                <p>ତୁମ ଚିନ୍ତାଧାରା ଏବଂ କାର୍ଯ୍ୟଗୁଡ଼ିକ ମୋତେ ଏକ ଉତ୍ତମ ମନୁଷ୍ୟ ହେବା ପାଇଁ ପ୍ରେରିତ କରେ ।</p>
             </div>
         </div>
 
@@ -164,11 +221,43 @@
         <div class="slide">
             <img src="images/l4.jpg" alt="Romantic Moment 4" class="full-screen-image">
             <div class="bottom-message">
-                <h1>Always and Forever</h1>
-                <p>Through all of life's ups and downs, I'll always be here for you. Forever and always.</p>
+                <h1>ମୋ ଆଶାର ଆଲୋକ</h1>
+                <p>ତୁମର ଉପସ୍ଥିତି ମୋ ମୁହଁରେ ହସ ଉଜ୍ଜ୍ୱଳ କରେ, ତୁମ ପ୍ରେମ ମୋ ପାଇଁ ଆଶାର ଆଲୋକ |</p>
             </div>
         </div>
 
+        <div class="slide">
+            <img src="images/l8.jpg" alt="Romantic Moment 4" class="full-screen-image">
+            <div class="bottom-message">
+                <h1>ଆମ ପ୍ରେମର ସାକ୍ଷୀ</h1>
+                <p>ଏହି ବିନ୍ଦୁସାଗର ଆମର ପ୍ରେମର ଆରମ୍ଭର ସାକ୍ଷୀ । ତେଣୁ, ଆଜି ଏହି ମହାନ ବିନ୍ଦୁସାଗର କୁ ସାକ୍ଷୀ ରଖି ମୋର ହୃଦୟ ପ୍ରକାଶ କରୁଛି |</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="images/l5.jpg" alt="Romantic Moment 4" class="full-screen-image">
+            <div class="bottom-message">
+                <h1>ପ୍ରାର୍ଥନା ପ୍ରସ୍ତୁତ</h1>
+                <p>ମା, ମାମା, ଆମ ଘରର ବଡ ଏବଂ ପିତୃପୁରୁଷ ଦୟାକରି ମୋତେ ଅନୁମତି ଏବଂ ଆଶୀର୍ବାଦ ଦିଅନ୍ତୁ |</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="images/l9.jpg" alt="Romantic Moment 4" class="full-screen-image">
+            <div class="bottom-message">
+                <h1>ଜୟ ଜଗନ୍ନାଥ</h1>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="images/l6.jpg" alt="Romantic Moment 4" class="full-screen-image">
+            <div class="bottom-message">
+                <h1>ସଦା ସର୍ବଦା</h1>
+                <p>ଜୀବନର ସମସ୍ତ ଉତ୍ଥାନ-ପତନ ମଧ୍ୟରେ ବଞ୍ଚିବା ପାଇଁ, ମୁଁ ତୁମର ହାତ ପାଇ ପାରିବି କି? ସଦା ସର୍ବଦା ପାଇଁ |</p>
+            </div>
+        </div>
+
+    </div>
         <!-- Navigation Arrows -->
         <div class="slider-navigation">
             <button class="prev" onclick="prevSlide()">❮</button>
@@ -176,35 +265,36 @@
         </div>
     </div>
 
-    <!-- Love Message at the Bottom -->
-    <!-- <div class="bottom-message">
-        <p>You're the love of my life ❤️</p>
-    </div> -->
-
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        const fallingItemsContainer = document.getElementById('falling-items');
 
         // Display the first slide
         slides[currentSlide].style.display = 'block';
 
         // Disable the "Previous" button if the current slide is the first one
-        const prevButton = document.querySelector('.prev');
-
-        // Function to update navigation button states
         function updateNavigationButtons() {
             if (currentSlide === 0) {
                 prevButton.disabled = true;
             } else {
                 prevButton.disabled = false;
             }
+
+            if (currentSlide === totalSlides - 1) {
+                nextButton.disabled = true;
+            } else {
+                nextButton.disabled = false;
+            }
         }
 
         // Function to show next slide
         function nextSlide() {
             slides[currentSlide].style.display = 'none';
-            currentSlide = (currentSlide + 1) % totalSlides; // Loop back to the first slide
+            currentSlide = (currentSlide + 1) % totalSlides;
             slides[currentSlide].style.display = 'block';
             updateNavigationButtons();
         }
@@ -212,13 +302,34 @@
         // Function to show previous slide
         function prevSlide() {
             slides[currentSlide].style.display = 'none';
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; // Loop back to the last slide
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
             slides[currentSlide].style.display = 'block';
             updateNavigationButtons();
         }
 
+        // Function to generate falling hearts and roses within the current image
+        function generateFallingItems() {
+            const itemsCount = 30; // Number of items falling
+            for (let i = 0; i < itemsCount; i++) {
+                const item = document.createElement('div');
+                item.classList.add('falling-item');
+                item.style.left = `${Math.random() * 100}vw`; // Random position across the screen (within the container)
+                item.style.animationDuration = `${Math.random() * 8 + 8}s`; // Random speed for each item
+                item.style.animationDelay = `${Math.random() * 3}s`; // Random delay to stagger the fall
+
+                // Alternate between hearts and roses
+                item.innerHTML = '❤️';
+                item.classList.add('heart');
+
+                fallingItemsContainer.appendChild(item);
+            }
+        }
+
         // Initialize the navigation state
         updateNavigationButtons();
+
+        // Generate falling hearts and roses on page load
+        generateFallingItems();
     </script>
 
 </body>
